@@ -1,0 +1,16 @@
+import math
+
+def p3(obj):
+    
+    prime_factors = []
+    
+    #prime factors list generator? Find prime numbers leading up to obj/2, 
+    #and primes that are factors of obj
+    for num in range(3,int(obj/2),2):
+        if obj %num == 0 and all(num %i != 0 for i in range(2,int(math.sqrt(num))+1)):
+            prime_factors = prime_factors + [num]
+    
+    #find largest prime number
+    max_prime = max(prime_factors)
+    return max_prime
+    
