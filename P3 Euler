@@ -1,7 +1,50 @@
-import math
 
-def p3(obj):
+##The prime factors of 13195 are 5, 7, 13 and 29.
+ What is the largest prime factor of the number 600851475143?##
+
+#FIRST ITERATION OF SOLUTION
+def p3a():
+    '''The prime factors of 13195 are 5, 7, 13 and 29.
+    What is the largest prime factor of the number 600851475143 ?
+    THIS ANSWER WORKS FOR SMALLER NUMBERS, I NEED TO FIGURE OUT
+    HOW TO ACCOMODATE FOR MASSIVE NUMBERS'''
+    num = 600851475143
+    max_factor = int(num/2)
+    max_list = list(range(1,max_factor)) #cant make super big lists...
+    factor_list = []
+    #print(max_factor)
     
+    #first find all the factors of a number
+    #if num divided by a factor is 0, it's a legit factor
+    for factor in max_list:
+        if num %factor == 0:
+            factor_list = factor_list + [factor]
+    #print(factor_list)
+            
+    #second, check which factors are prime
+    #if each factor is only divisible by 1 and itself, 
+    #the nonprimes list will be empty, aka, it's a prime #!
+    prime_list = []
+    nonprimes = []
+    for p in factor_list:
+        p_factors = list(range(2,p))
+        for factor in p_factors:
+            if p %factor == 0:
+                nonprimes = nonprimes + [factor]
+        if len(nonprimes) == 0:
+                prime_list = prime_list + [p]
+    
+    #last, find the largest of the prime list
+    print(len(prime_list))
+    #print(prime_list)
+    return max(prime_list)
+
+###############################################
+
+#SECOND ITERATION OF SOLUTION
+import math
+def p3b(obj):
+    '''Better, but still a brute force method...'''
     prime_factors = []
     
     #prime factors list generator? Find prime numbers leading up to obj/2, 
@@ -9,8 +52,21 @@ def p3(obj):
     for num in range(3,int(obj/2),2):
         if obj %num == 0 and all(num %i != 0 for i in range(2,int(math.sqrt(num))+1)):
             prime_factors = prime_factors + [num]
-    
+            obj = obj /num
+            
     #find largest prime number
     max_prime = max(prime_factors)
     return max_prime
     
+####################################################
+
+#FINAL ITERATION
+def p3Final(num):
+    '''This solution is super fast, and utilizes principles of 
+       prime factorization in a simpler manner'''
+    factor = 2
+    while factor**2 < num:
+        while num %factor == 0:
+            num = num / factor
+        factor = factor + 1
+    return num
