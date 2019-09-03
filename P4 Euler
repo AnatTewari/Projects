@@ -1,0 +1,30 @@
+def p4(low,high):
+    '''A palindromic number reads the same both ways. The largest palindrome made from the product of two 2-digit numbers is 9009 = 91 × 99.
+       Find the largest palindrome made from the product of two 3-digit numbers.
+       
+       For this answer, put low = 100 and high = 999'''
+    
+    raw_list = list(range(low,high+1))
+    pali = []
+    num = low
+    
+    #This encompassing while loop ensures that all numbers in raw_list
+    #have multiplied with each other, eg. in [2,10] 2*1, 2*2, 2*3... 2*10, 3*1...
+    while num <= high+1:
+    
+        for num2 in raw_list:
+        
+            val = num * num2
+            
+             #Check if val is palindrome
+            val_check = [int(x) for x in str(val)]
+            if val_check == val_check[::-1]:
+            
+            #If val is not already in list, add onto list
+                if val not in pali:
+                    pali = pali + [val]
+                    
+        num = num + 1
+        
+    #Print out the largest palindrome in the pali list
+    print(max(pali))
