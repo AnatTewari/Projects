@@ -1,0 +1,24 @@
+def p6a(num):
+    '''sum of squares'''
+    total_a = 0
+    num_list = list(range(1,num+1))
+    for s in num_list:
+        tot = s**2
+        total_a = total_a + tot
+    return total_a
+    
+def p6b(num):
+'''square the sum'''
+  total_b = 0
+  num_list = list(range(1,num+1))
+  for s in num_list:
+      total_b = total_b + s
+  return total_b**2
+    
+def p6_final(num):
+  '''Find the difference between the sum of the squares 
+  of the first one hundred natural numbers and the square of the sum.'''
+  sum_square = p6a(num)
+  square_of_sums = p6b(num)
+
+  return square_of_sums - sum_square 
