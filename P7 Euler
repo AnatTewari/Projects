@@ -8,7 +8,7 @@ def isPrime(num):
     return True
     
     
-def p7b(prime):
+def p7(prime):
     
     prime_list = [2]
     val = 3
