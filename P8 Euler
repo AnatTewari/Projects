@@ -1,0 +1,37 @@
+### Find the thirteen adjacent digits in the 1000-digit number that have the greatest product. 
+###What is the value of this product? The specific number can be found in Problem 8 at the Project Euler website.
+
+def multiplyList(myList) : 
+      
+    # Multiply elements one by one in list
+    result = 1
+    for x in myList: 
+         result = result * x  
+    return result  
+
+def p8(num):
+    
+    all_num = [int(i) for i in str(num)]
+    start = 0
+    end = 13
+    start_two = 1
+    end_two = 14
+    
+    while end and end_two <= (len(all_num) - 1):
+        group = all_num[start:end]
+        group_two = all_num[start_two:end_two]
+        g_prod = multiplyList(group)
+        gtwo_prod = multiplyList(group_two)
+        if g_prod >= gtwo_prod:
+            start_two = start_two + 1
+            end_two = end_two + 1
+        elif g_prod <= gtwo_prod:
+            start = start + 1
+            end = end + 1
+    else:
+        if g_prod >= gtwo_prod:
+            print(g_prod)
+            return(group)
+        elif g_prod <= gtwo_prod:
+            print(gtwo_prod)
+            return(group_two)
