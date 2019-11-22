@@ -7,25 +7,20 @@ def isPrime(num):
             return False
     return True
     
+    
 def p7b(prime):
+    
     prime_list = [2]
-    print('1')
     val = 3
-    print('2')
-   # up = 0
-    while (len(prime_list) + 1) <= prime:
-        print('3')
-        #for var in list(range(3,(val+1))):
+   
+    while len(prime_list) < prime:
+        
         if isPrime(val) == True:
-            print('4')
             prime_list.append(val)
-            print('5')
-                #up = up + 2
             val = val + 1
-            print('6')
-            continue
+            
+        elif isPrime(val) == False:
+            val = val + 1
+    
     else:
-             #   val = val + 1
-              #  continue
-        print(prime_list)
         return prime_list[prime-1]
