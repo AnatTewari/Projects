@@ -1,0 +1,20 @@
+## Find the sum of primes below a number, eg, 2000000
+
+import math
+def isPrime(num):
+    if num < 2:
+        return False
+    for i in range(2,int(math.sqrt(num)) + 1):
+        if num % i == 0:
+            return False
+    return True
+    
+    def p10(num):
+      total = 0
+      for x in range(0,num):
+        prime = isPrime(x)
+        if prime == True:
+            total = total + x
+        elif prime == False:
+            continue
+      return total
