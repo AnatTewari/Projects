@@ -1,0 +1,48 @@
+## Find the unique Pythagorean triplet that sums up to 1000, ie, a + b + c = 1000, and return 
+## the product of a,b,c
+
+## My first attempt was to make a general function that can find the triplet and product, but for 
+## some reason, the triplet that sums up to 1000 cannot be found in p9(num). 
+
+## p9 func uses Euclid's properties to relate a,b,c by using 'm' and 'n'. This does not work to get 1000
+
+import math
+def p9(num):
+    
+    m = 2
+    n = 1
+    a = (m**2) - (n**2)
+    b = 2 * m * n
+    c = (m**2) + (n**2)
+    tot = a + b + c
+    
+    while tot < num or tot > num:
+        
+        m = m + 1
+        n = n + 1
+        a = (m**2) - (n**2)
+        b = 2 * m * n
+        c = (m**2) + (n**2)
+        tot = a + b + c
+        print(a,b,c)
+        
+    else:
+        print(a,b,c)
+        return a*b*c
+
+## p9b func is geared towards finding 1000, and does so by ensuring that a+b+c=1000
+## and that a^2+b^2 == c^2
+
+## It is a better func for this case because it specifically uses the two hints provided in the problem,
+## while I was overcomplicating it, in way
+
+# p9b came from searching online for successful solutions to understand what I was doing right/wrong
+
+def p9b(num):
+    for c in range(2,num):
+        for a in range(1,c):
+            b = num - c - a
+            
+            if a**2 + b**2 == c**2:
+                print(a,b,c)
+                return a*b*c
